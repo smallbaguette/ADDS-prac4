@@ -22,7 +22,6 @@ std::string Reverse::reverseString(std::string letters) {
     if(letters.length()==0) {
         return letters;
     } else {
-        std::cout<<"reverse("<<letters.substr(1)<<") + "<<letters[0]<<std::endl;;
         return reverseString(letters.substr(1))+letters[0];
     }
 }
