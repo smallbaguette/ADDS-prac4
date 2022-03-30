@@ -7,7 +7,9 @@ int Truckloads::numTrucks(int numCrates, int loadSize) {
     int pile1, pile2;
 
     //base class: if numCrates <= loadSize, return 1
-    if (numCrates <= loadSize) {
+    if (numCrates==0) {
+        return 0;
+    } else if (numCrates <= loadSize) {
         return 1;
     } else {
         pile1 = numCrates / 2;
