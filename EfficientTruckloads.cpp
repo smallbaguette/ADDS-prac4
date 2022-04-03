@@ -6,18 +6,22 @@
 return number of trucks needed */
 int EfficientTruckloads::numTrucks(int numCrates, int loadSize) {
     int pile1, pile2;
-    if (numCrates == 0) {
+
+    //base class: if numCrates <= loadSize, return 1
+    if (numCrates == 0 || numCrates == 1) {
         if (lookupTable.size() == 0) {
-            lookupTable.push_back(0);
+            lookupTable.push_back(0); 
         }
-        if (numCrates == 1 && lookupTable.size() <= 1) {
+        if (numCrates <= loadSize) {
             lookupTable.push_back(1);
         }
-        return numCrates;
-    } 
-
-    pile1 = numCrates / 2;
-    pile2 = numCrates - pile1;
-    lookupTable.push_back((numTrucks(pile1, loadSize) + numTrucks(pile2, loadSize)));
-    return lookupTable.at(numCrates);
+        return lookupTable.at(numCrates);
+    }
+    
+    /*if (lookupTable.size() <= numCrates) {
+        pile1 = numCrates / 2;
+        pile2 = numCrates - pile1;
+        lookupTable.push_back(numTrucks(pile1, loadSize) + numTrucks(pile2, loadSize));
+    }
+    return lookupTable.at(numCrates);*/
 }
